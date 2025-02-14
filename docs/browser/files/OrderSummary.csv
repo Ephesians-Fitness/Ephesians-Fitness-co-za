@@ -1,0 +1,1 @@
+CartID,OrderID,ClientEmail,SubTotal,ShippingFee,FinalTotal,OrderStatus,OrderDate,OrderUpdateDate,OrderNotes
