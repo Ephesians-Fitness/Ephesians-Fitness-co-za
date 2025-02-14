@@ -1,0 +1,32 @@
+<body>
+    <div class="register-container">
+        <h2>Register</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <label>Full Name:</label>
+            <input formControlName="fullName" type="text" required />
+          
+            <label>Email:</label>
+            <input formControlName="email" type="email" required />
+          
+            <label>Username:</label>
+            <input formControlName="username" type="text" required /> <!-- Added username field -->
+          
+            <label>Password:</label>
+            <input formControlName="password" type="password" required />
+          
+            <label>Confirm Password:</label>
+            <input formControlName="confirmPassword" type="password" required />
+          
+            <button class="custom-button" type="submit">
+                <span class="main-text">Register</span>
+                <span class="sub-text">Accept Terms & Conditions</span>
+              </button>
+              
+            <button (click)="onBack()">Back</button>
+          </form>
+          
+          <p>{{ message }}</p>
+          
+      </div>
+</body>
+  

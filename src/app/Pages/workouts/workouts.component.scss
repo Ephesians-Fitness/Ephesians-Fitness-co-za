@@ -1,0 +1,284 @@
+@import '../../Styles/general-colors.scss';
+@import '../../Styles/general-styling.scss';
+
+.hero {
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    margin-top: 4.5rem;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    background-image: url("../../../../public/images/Ephesians-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+
+    h1 {
+      font-family: $font-heading;
+      color: $header-text;
+      font-size: 2.5em;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-family: $font-sub-heading;
+      color: $header-text;
+      font-size: 1.8rem;
+      line-height: 1;
+      margin-bottom: 15px;
+    }
+
+    .verse {
+      font-family: $font-body;
+      color: $hero-text-color;
+      font-size: 1.4em;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-family: $font-body;
+      color: $hero-text-color;
+      font-size: 1.3em;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+  }
+
+  .workout-programs{
+    background-image: url("../../../../public/images/gym-workout.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+  }
+
+  .coaching-programs{
+    background-image: url("../../../../public/images/outdoor-workout.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+  }
+
+
+.workout-programs,
+.coaching-programs {
+  padding: 40px;
+  text-align: center;
+
+  h2 {
+    font-family: $font-sub-heading;
+    color: $header-text;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+
+  .program-grid,
+  .coaching-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(3, 1fr));
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .program-card,
+  .coaching-card {
+    background-color: $secondary-color;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+    margin: 20px;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    h3 {
+      font-family: $font-sub-heading;
+      font-size: 1.4rem;
+      margin-bottom: 15px;
+      color: $accent-color;
+    }
+
+    p {
+      font-family: $font-body;
+      font-size: 1.1rem;
+      color: $hero-text-color;
+      margin-bottom: 20px;
+    }
+
+    .cta-btn {
+      font-family: $font-button;
+      background-color: $general-button-color;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $general-button-hover;
+      }
+    }
+  }
+}
+
+.request-workout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    color: white;
+    text-align: center;
+
+    background-image: url("../../../../public/images/Ephesians-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+  
+    .form-card {
+      background-color: $secondary-color;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto;
+  
+      h2 {
+        font-family: $font-heading;
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        color: $accent-color;
+      }
+  
+      p {
+        font-family: $font-body;
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: $primary-text-color;
+      }
+  
+      .form-group {
+        margin-bottom: 20px;
+        text-align: left;
+  
+        label {
+          font-family: $font-body;
+          font-size: 1rem;
+          margin-bottom: 8px;
+          display: block;
+          color: $primary-text-color;
+        }
+      }
+  
+      .cta-btn {
+        display: block;
+        width: 60%;
+        padding: 15px;
+        font-size: 1.2rem;
+        font-family: $font-button;
+        background-color: $general-button-color;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+  
+        &:hover {
+          background-color: $general-button-hover;
+          transform: translateY(-2px);
+        }
+  
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  
+    .email-warning {
+      font-size: 0.9rem;
+      color: #f39c12;
+      margin-top: 8px;
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .request-workout {
+      padding: 30px 10px;
+  
+      .form-card {
+        padding: 20px;
+      }
+  
+      .cta-btn {
+        font-size: 1rem;
+      }
+    }
+  }
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+  .hero {
+    font-size: 1rem;
+    padding: 30px 10px;
+  }
+
+  .program-grid,
+  .coaching-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .program-card,
+  .coaching-card {
+    margin: 10px;
+  }
+
+  .carousel-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .carousel {
+    width: 90%;
+  }
+
+  .request-workout .form-group input,
+  .request-workout .form-group textarea {
+    width: 100%;
+  }
+
+  .cta-btn {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .page-count {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    font-size: 0.9rem;
+    padding: 20px 10px;
+  }
+
+  h2 {
+    font-size: 2em;
+  }
+
+  .cta-btn {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}

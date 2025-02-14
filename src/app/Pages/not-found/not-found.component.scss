@@ -1,0 +1,39 @@
+@import '../../Styles/general-colors.scss';
+@import '../../Styles/general-styling.scss';
+
+body{
+    padding: 8rem;
+    background-color: rgba(0, 0, 0, 0.4);
+  
+    background-image: url("../../../../public/images/Ephesians-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+  }
+
+.not-found {
+    text-align: center;
+    margin-top: 8rem;
+  
+    h1 {
+      font-size: 2.5rem;
+      color: red;
+    }
+  
+    p {
+      font-size: 1.2rem;
+      color: $primary-text-color
+    }
+  
+    a {
+      font-size: 1rem;
+      color: $social-link-color;
+      text-decoration: underline;
+
+      &.hover{
+        color: $social-link-hover
+      }
+    }
+  }
+  

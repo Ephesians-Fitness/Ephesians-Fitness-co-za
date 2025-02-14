@@ -1,0 +1,54 @@
+@import '../../Styles/general-colors.scss';
+@import '../../Styles/general-styling.scss';
+
+.home-container {
+  text-align: center;
+
+  .hero {
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    background-image: url("../../../../public/images/Ephesians-background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+
+    h1 {
+      font-family: $font-heading;
+      color: $primary-text-color;
+      font-size: 2.5em;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .verse {
+      font-family: $font-body;
+      color: $hero-text-color;
+      font-size: 1.4em;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-family: $font-body;
+      color: $hero-text-color;
+      font-size: 1.3em;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+  }
+
+  .filter-container {
+    margin-bottom: 1.5rem;
+  }
+  
+  label{
+    font-size: 2rem;
+    font-weight: bold;
+    color: $primary-text-color;
+    margin-bottom: 1.5rem;
+  }
+}

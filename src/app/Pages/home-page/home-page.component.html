@@ -1,0 +1,62 @@
+<body>
+    <div class="home-container">
+  
+      <div class="hero">
+        <h1>Welcome to Ephesians Fitness</h1>
+        <p class="verse">
+          “For it is by grace you have been saved, through faith…” - Ephesians
+          2:8-9
+        </p>
+        <p>
+          Discover premium, Christian-centered fitness apparel designed to inspire
+          and empower your journey.
+        </p>
+        <p>
+          From stylish pump covers to comfortable joggers and hoodies, we have
+          everything you need to look and feel great while you train.
+        </p>
+          <button (click)="onShop()">Start Shopping</button>
+          <button (click)="onProgram()">Hit the Gym</button>
+      </div>
+    
+  
+      <div class="custom-divider"></div>
+  
+      <!-- Dropdown to select category -->
+      <label for="category">Select Category:</label>
+      <div class="filter-container">
+        <select id="category" [(ngModel)]="selectedCategory" (change)="filterProducts()">
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        </select>
+      </div>
+  
+    <!-- Product Carousel -->
+      <div class="carousel-container">
+        <div class="product-grid">
+          <div class="product-card" *ngFor="let product of displayedProducts">
+            <img [src]="product.image" alt="{{ product.name }}" />
+            <p>{{ product.name }}</p>
+          </div>
+        </div>
+      
+        <!-- Pagination Controls -->
+        <div class="pagination">
+          <button (click)="prevPage()" [disabled]="currentPage === 1"> << </button>
+          <span>Page {{ currentPage }} of {{ totalPages }}</span>
+          <button (click)="nextPage()" [disabled]="currentPage * productsPerPage >= products.length"> >> </button>
+        </div>
+    </div>
+  </div>
+  
+    <div class="custom-divider"></div>
+  
+    <app-about-us></app-about-us>
+  
+    <div class="custom-divider"></div>
+  
+    <app-contact-us></app-contact-us>
+    
+    <div class="custom-divider"></div>
+  
+  </body>
+  

@@ -1,0 +1,129 @@
+<body>
+    <main>
+      <div class="hero">
+        <h1>Workout Programs at Ephesians Fitness</h1>
+        <p>
+          Explore personalized and goal-oriented workout plans, built to help you
+          achieve your best self.
+        </p>
+      </div>
+      
+      <div class="custom-divider"></div>
+  
+      <div class="workout-programs">
+        <h2>Our Workout Programs</h2>
+        <div class="carousel-container">
+  
+          <div class="carousel">
+            <div class="program-grid">
+              <div
+                class="program-card"
+                *ngFor="let program of getVisibleWorkoutPrograms()"
+              >
+                <h3>{{ program.title }}</h3>
+                <p>{{ program.description }}</p>
+                <button class="cta-btn" (click)="viewWorkoutProgram(program.id)">
+                  View Program
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-count">
+          <button (click)="prevWorkoutProgram()">&#10094;</button>
+          {{ getCurrentWorkoutPage() }} of {{ getTotalWorkoutPages() }}
+          <button (click)="nextWorkoutProgram()">&#10095;</button>
+        </div>
+
+      </div>
+  
+      <div class="custom-divider"></div>
+  
+      <div class="coaching-programs">
+        <h2>Our Coaching Programs</h2>
+        <div class="carousel-container">
+          <!-- Previous button -->
+  
+          <div class="carousel">
+            <div class="coaching-grid">
+              <div
+                class="coaching-card"
+                *ngFor="let coaching of getVisibleCoachPrograms()"
+              >
+                <h3>{{ coaching.title }}</h3>
+                <p>{{ coaching.description }}</p>
+                <button class="cta-btn" (click)="viewCoachingProgram(coaching.id)">
+                  View Coaching Program
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-count">
+          <button (click)="prevCoachProgram()">&#10094;</button>
+          {{ getCurrentCoachPage() }} of {{ getTotalCoachPages() }}
+          <button (click)="nextCoachProgram()">&#10095;</button>
+        </div>
+      </div>
+
+      <div class="custom-divider"></div>
+  
+      <div class="request-workout">
+        <div class="form-card">
+          <h2>Request a Personalized Workout Plan</h2>
+          <p>
+            Let us help you achieve your fitness goals with a workout plan tailored to your needs. Fill out the form below to get started!
+          </p>
+          <p>
+            Note: For a personal workout plan, Payment will need to be provided. The payment Details will be sent to your email address.
+          </p>
+          <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input
+                type="text"
+                id="name"
+                [(ngModel)]="formData.name"
+                name="name"
+                required
+                placeholder="Enter your full name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                [(ngModel)]="formData.email"
+                name="email"
+                required
+                placeholder="Enter your email address"
+                (focus)="onEmailFocus()"
+              />
+              <p *ngIf="emailFocused" class="email-warning">
+                Please ensure you enter the correct email address.
+              </p>
+            </div>
+            <div class="form-group">
+              <label for="goals">Your Fitness Goals:</label>
+              <textarea
+                id="goals"
+                [(ngModel)]="formData.goals"
+                name="goals"
+                required
+                placeholder="Describe your fitness goals here..."
+              ></textarea>
+            </div>
+            <button class="button" type="submit">Request Workout</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="custom-divider"></div>
+      
+    </main>
+    <app-popup-message></app-popup-message>
+  </body>
+  

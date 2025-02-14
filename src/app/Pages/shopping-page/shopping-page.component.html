@@ -1,0 +1,175 @@
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Products Page</title>
+  </head>
+  
+  <body>
+    <div class="shopping-container">
+      <div class="hero">
+        <h1>Welcome to Ephesians Fitness</h1>
+        <p class="verse">
+          “For it is by grace you have been saved, through faith…” - Ephesians
+          2:8-9
+        </p>
+        <p>
+          Discover premium, Christian-centered fitness apparel designed to inspire
+          and empower your journey.
+        </p>
+        <p>
+          From stylish pump covers to comfortable joggers and hoodies, we have
+          everything you need to look and feel great while you train.
+        </p>
+      </div>
+  
+      <div class="custom-divider"></div>
+  
+      <div class="custom-shopping">
+        <div>
+          <h2>Custom Shopping</h2>
+          <p>
+            If you would like to have a personalised verse on your Pump Covers, please select the Cross Logo.
+          </p>
+          <p>You will get the opportunity to enter a verse when you finalise the order at check out.</p>
+          <p>For any other clothing add the verse and the product in the same message at checkout.</p>
+        </div>
+  
+        <div>
+          <h2>Example</h2>
+          <p>
+            Pump Cover ~ MARK 5:14
+          </p>
+          <p>Hoodie ~ EPH 6:10-11</p>
+        </div>
+      </div>
+  
+      <div class="custom-divider"></div>
+  
+      <!-- Dropdown to select category -->
+      <label for="category">Select Category:</label>
+      <div class="filter-container">
+        <select
+          id="category"
+          [(ngModel)]="selectedCategory"
+          (change)="filterProducts()"
+        >
+          <option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- Product Carousel -->
+      <div class="carousel-container">
+        <div class="product-grid">
+          <div class="product-card" *ngFor="let product of displayedProducts">
+            <img [src]="product.image" alt="{{ product.name }}" />
+            <figcaption>{{ product.name }}</figcaption>
+            <p>R{{ product.price }}</p>
+  
+            <div class="option-group">
+              <!-- Select for Sizes -->
+              <label for="size-{{ product.id }}">Size</label>
+              <select
+                id="size-{{ product.id }}"
+                [(ngModel)]="product.selectedSize"
+              >
+                <option
+                  *ngFor="let size of product.availableSizes"
+                  [value]="size"
+                >
+                  {{ size }}
+                </option>
+              </select>
+  
+              <!-- Select for Types -->
+              <label for="type-{{ product.id }}">Type</label>
+              <select
+                id="type-{{ product.id }}"
+                [(ngModel)]="product.selectedType"
+              >
+                <option
+                  *ngFor="let type of product.availableTypes"
+                  [value]="type"
+                >
+                  {{ type }}
+                </option>
+              </select>
+  
+              <!-- Select for Colors -->
+              <label for="color-{{ product.id }}">Color</label>
+              <select
+                id="color-{{ product.id }}"
+                [(ngModel)]="product.selectedColor"
+              >
+                <option
+                  *ngFor="let color of product.availableColors"
+                  [value]="color"
+                >
+                  {{ color }}
+                </option>
+              </select>
+            </div>
+  
+            <button
+              (click)="
+                addToCart(
+                  product,
+                  {
+                    size: product.selectedSize,
+                    color: product.selectedColor,
+                    type: product.selectedType
+                  },
+                  1
+                )
+              "
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+  
+        <!-- Pagination Controls -->
+        <div class="pagination">
+          <button (click)="prevPage()" [disabled]="currentPage === 1"><<</button>
+          <span>Page {{ currentPage }} of {{ totalPages }}</span>
+          <button
+            (click)="nextPage()"
+            [disabled]="currentPage * productsPerPage >= products.length"
+          >
+            >>
+          </button>
+        </div>
+  
+        <app-cart-count></app-cart-count>
+        <button class="check-button" (click)="onViewCart()">View Cart</button>
+      </div>
+  
+      <div class="custom-divider"></div>
+      <div class="order-info">
+        <div>
+          <h2>Shipping Information</h2>
+          <p>Shipping will be R50 across South Africa.</p>
+          <p>If you spend more than R800 your shipping will be free.</p>
+        </div>
+  
+        <div>
+          <h2>Order Confirmation & Payment</h2>
+          <p>
+            As soon as we have received your order we will send you an invoice.
+          </p>
+          <p>We will confirm your order once you have made the payment.</p>
+        </div>
+      </div>
+  
+      <div class="custom-divider"></div>
+      <app-about-us></app-about-us>
+  
+      <div class="custom-divider"></div>
+      <app-reviews></app-reviews>
+  
+      <div class="custom-divider"></div>
+  
+    </div>
+  </body>
+  

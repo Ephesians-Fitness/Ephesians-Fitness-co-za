@@ -1,0 +1,94 @@
+@import '../../Styles/general-colors.scss';
+@import '../../Styles/general-styling.scss';
+
+.checkout-container {
+    padding: 40px;
+    max-width: 600px;
+    margin: auto;
+    margin-top: 3rem;
+
+    h1, h2, h3 {
+        color: $primary-text-color;
+        text-align: center;
+    }
+
+    .cart-summary {
+        margin-bottom: 20px;
+        // border: 2px solid $text-light-color;
+        // border-radius: 8px;
+
+        .cart-item {
+            border-bottom: 1px solid $divider-color;
+            padding: 10px 0;
+
+            p {
+                margin: 5px 0;
+                margin-left: 70px;
+                color: $primary-text-color;
+            }
+
+            .p1 {
+                margin: 5px 0;
+                margin-left: 70px;
+                font-weight: bold;
+                color: $primary-text-color;
+            }
+        }
+
+        .total-amount {
+            margin-left: 70px;
+            font-weight: bold;
+            color: $primary-text-color;
+        }
+    }
+
+    .user-information {
+        margin-top: 20px;
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: $primary-text-color;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid $input-border;
+            border-radius: 4px;
+            background-color: $input-background;
+
+            &:focus {
+                border-color: $input-focus;
+                outline: none;
+            }
+        }
+
+        .confirm-order {
+            font-family: $font-button;
+            font-size: 1rem;
+            background-color: $general-button-color;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $general-button-hover;
+            }
+        }
+    }
+
+    .back-to-cart {
+        margin-top: 20px;
+        color: $primary-color;
+    }
+}
+
+.email-warning {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }

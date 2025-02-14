@@ -1,0 +1,305 @@
+@import '../Styles/general-colors.scss';
+
+$font-heading: "Tahoma";
+$font-sub-heading: "Trebuchet MS";
+$font-body: "Sans-Serif";
+$font-button: "Helvetica";
+$font-product: "Geneva";
+
+// Reset styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-body;
+  background-color: $primary-color;
+  color: $primary-text-color;
+}
+
+.custom-divider {
+  height: 2px; // Divider thickness
+  background: linear-gradient(
+    90deg,
+    $custom-devider-gradient-3,
+    $custom-devider-gradient-2,
+    $custom-devider-gradient-3
+  ); // Gradient color effect
+  margin: 2rem 0; // Space above and below the divider
+  width: 100%; // Full width
+  border: none;
+  position: relative;
+}
+
+.custom-divider::before {
+  content: "";
+  position: absolute;
+  top: -8px; // Adjust to position it slightly above the divider
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px; // The size of the small circle
+  height: 20px; // The size of the small circle
+  background-color: #797777; // Circle color
+  border-radius: 50%; // Make it a circle
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); // Optional: add a shadow for depth
+}
+
+button {
+  font-family: $font-button;
+  margin: 0.5rem;
+  background-color: $general-button-color;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($general-button-hover, 10%);
+  }
+}
+
+input,
+textarea {
+  background-color: $input-background;
+  color: $primary-text-color;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid $input-border;
+  border-radius: 4px;
+  font-size: 1rem;
+
+  &:focus {
+    border-color: $input-focus;
+    outline: none;
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 5rem;
+}
+
+select {
+  font-size: 1rem;
+  color: black;
+  text-align: center;
+  width: 40%;
+  padding: 8px;
+  background-color: $input-background;
+  border: 1px solid $primary-color;
+  border-radius: 4px;
+  appearance: none;
+  align-self: center;
+
+    &:focus {
+      outline: none;
+      border-color: #4caf50;  // Change border color on focus
+      background-color: #e8f5e9;  // Slight background change on focus
+    }
+  }
+
+  .carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+    .product-grid {
+      display: grid;
+      gap: 0.5rem;
+      margin: 1.5rem;
+  
+      // Default - Desktop View (3 items per row)
+      grid-template-columns: repeat(3, 1fr); 
+  
+      @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr); // 2 items per row on tablets
+      }
+  
+      @media (max-width: 768px) {
+        grid-template-columns: 1fr; // 1 item per row on mobile
+      }
+    }
+  
+    .product-card {
+      width: 100%; 
+      max-width: 20rem; 
+      border: 1px solid #ddd;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+      img {
+        width: 100%; 
+        height: auto;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease-in-out;
+  
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+  
+
+.custom-carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.25rem;
+    margin: 1.5rem;
+
+    .product-card {
+      width: 20rem;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+      img {
+        width: 80%;
+        height: auto;
+        margin-bottom: 1rem;
+        transition: transform 0.3s ease-in-out; // Smooth transition
+
+        &:hover {
+          transform: scale(1.5); // Enlarge the image on hover
+        }
+      }
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  gap: 1rem;
+
+  button {
+    padding: 0.5rem 1rem;
+    background-color: $general-button-color;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($general-button-color, 10%);
+    }
+    &:disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.email-warning {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.custom-button {
+  display: flex;
+  flex-direction: column; /* Stack text vertically */
+  align-items: center;
+  padding: 10px;
+  
+  .main-text {
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .sub-text {
+    font-size: 12px;
+    color: $font-button;
+  }
+}
+
+
+// Mobile-first design (default styles for mobile devices)
+@media (min-width: 320px) {
+  .product-grid {
+    grid-template-columns: 1fr; // Single column on small screens
+  }
+
+  .product-card {
+    width: 80%; // Full-width for small screens
+    padding: 0.75rem;
+  }
+}
+
+// Tablet styles
+@media (min-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); // Two columns on tablet-sized screens
+  }
+
+  .product-card {
+    width: 100%; // Full-width for tablet screens
+  }
+}
+
+// Desktop styles
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr); // Three columns on large screens
+  }
+
+  .product-card {
+    width: 20rem; // Keep the original width for larger screens
+  }
+}
+
+@media (max-width: 768px) {
+  button {
+    font-size: 0.9rem; // Smaller buttons on smaller screens
+    padding: 0.5rem;
+  }
+
+  input, textarea {
+    font-size: 0.9rem; // Smaller font size on mobile devices
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    flex-direction: column; // Stack items vertically on small screens
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr; // One column on small screens
+  }
+}
+
+@media (max-width: 480px) {
+  .product-card img {
+    width: 100%; // Images should be responsive too
+  }
+}
+
+body {
+  font-size: 1rem; // Base font size for mobile
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 1.125rem; // Larger font size for tablet screens
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    font-size: 1.25rem; // Larger font size for desktop screens
+  }
+}
+
+

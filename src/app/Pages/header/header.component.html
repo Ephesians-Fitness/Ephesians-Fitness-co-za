@@ -1,0 +1,30 @@
+<body>
+    <header class="header">
+      <div class="logo">
+        <a>Ephesians Fitness</a>
+      </div>
+    
+      <div class="burger" (click)="toggleMenu()">
+        <span class="burger-icon"></span>
+        <span class="burger-icon"></span>
+        <span class="burger-icon"></span>
+      </div>
+    
+      <nav class="nav-links" [ngClass]="{'active': menuOpen}">
+        <ul>
+          <li *ngIf="currentRoute !== '/home'"><a (click)="onHome()">Home</a></li>
+          <li *ngIf="currentRoute == '/home'"><a (click)="handleNavigation('about-us')">About Us</a></li>
+          <li *ngIf="currentRoute == '/home'"><a (click)="handleNavigation('contact-us')">Contact Us</a></li>
+          <li *ngIf="currentRoute !== '/support'"><a (click)="onHelp()">Help & Support</a></li>
+          <li *ngIf="currentRoute !== '/terms'"><a (click)="onTerms()">Terms & Conditions</a></li>
+          <li *ngIf="currentRoute !== '/shop'"><a (click)="onShop()">Shop</a></li>
+          <li *ngIf="currentRoute == '/shop'"><a (click)="handleReview('review')">Reviews</a></li>
+          <li *ngIf="currentRoute !== '/program'"><a (click)="onPrograms()">Workouts</a></li>
+          <li><a (click)="onOrders()">Orders</a></li>
+          <li *ngIf="!username"><a (click)="onLog()">Sign Up / Sign In</a></li>
+          <li *ngIf="username"><a (click)="onLog()">Welcome, {{ username }} (Logout)</a></li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+  
