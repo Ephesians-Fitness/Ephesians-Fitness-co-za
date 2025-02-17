@@ -19,6 +19,7 @@
           "options": {
             "outputPath": "dist/ephesians-fitness-co-za",
             "index": "src/index.html",
+            "baseHref": "/Ephesians-Fitness-co-za",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"

@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "predeploy": "ng build --configuration production --base-href /Ephesians-Fitness-co-za/",
+    "postbuild": "cp dist/ephesians-fitness-co-za/index.html dist/ephesians-fitness-co-za/404.html",
+    "deploy": "gh-pages -d dist/ephesians-fitness-co-za"
   },
   "private": true,
   "dependencies": {
