@@ -27,6 +27,9 @@ CARTID: any;
 ORDERID: any;
 currentDate: Date = new Date();
 
+// serverHost: string = 'http://localhost:3000';
+serverHost: string = 'https://ephesians-fitness-server.onrender.com';
+
 @ViewChild(PopupMessageComponent) popup!: PopupMessageComponent;
 
 userInfo = {
@@ -230,10 +233,10 @@ onSubmit(form: NgForm) {
       };
 
       // Send order data to the server
-      this.http.post('http://localhost:3000/add-order', { orderData }).subscribe({
+      this.http.post(`${this.serverHost}/add-order`, { orderData }).subscribe({
         next: () => {
           // Send summary data to the second endpoint
-          this.http.post('http://localhost:3000/add-order-summary', { summaryData }).subscribe({
+          this.http.post(`${this.serverHost}/add-order-summary`, { summaryData }).subscribe({
             next: () => {
               this.sendEmail(form);
               this.popup.show('Order has been placed successfully!');
@@ -343,7 +346,7 @@ sendEmail(form: NgForm) {
 
     this.http
       .post<{ message: string }>(
-        'http://localhost:3000/send-payment-email',
+        `${this.serverHost}/send-payment-email`,
         formData
       )
       .subscribe({

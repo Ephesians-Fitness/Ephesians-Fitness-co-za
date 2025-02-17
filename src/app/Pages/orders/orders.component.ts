@@ -30,6 +30,9 @@ export class OrdersComponent {
  totalPages: number = 0;
  //#endregion.
 
+ // serverHost: string = 'http://localhost:3000';
+serverHost: string = 'https://ephesians-fitness-server.onrender.com';
+
  constructor(
    private router: Router,
    private http: HttpClient,
@@ -86,7 +89,7 @@ export class OrdersComponent {
 
 //#region "Approve the Selected Order."
 approveOrder(cartId: string): void {
- this.http.post('http://localhost:3000/approve-order', { cartId }).subscribe({
+ this.http.post(`${this.serverHost}/approve-order`, { cartId }).subscribe({
    next: (response: any) => {
      this.popup.show(response.message || 'Order approved successfully.');
      this.loadOrders(); // Reload orders to reflect changes
@@ -112,7 +115,7 @@ sendShipmentEmail(orderId: string) {
   
   this.http
     .post<{ message: string }>(
-      'http://localhost:3000/send-shipment-email',
+      `${this.serverHost}/send-shipment-email`,
       emailData
     )
     .subscribe({
@@ -139,7 +142,7 @@ sendShipmentEmail(orderId: string) {
 
 //#region "Update status in DB."
 shipOrder(cartId: string): void {
- this.http.post('http://localhost:3000/ship-order', { cartId }).subscribe({
+ this.http.post(`${this.serverHost}/ship-order`, { cartId }).subscribe({
    next: (response: any) => {
      this.popup.show(response.message || 'Order shipped successfully.');
      this.loadOrders(); // Reload orders to reflect changes

@@ -26,7 +26,11 @@ reviews: ReviewParameters[] = [];
 paginatedReviews: ReviewParameters[] = [];
 currentPage: number = 0;
 pageSize: number = 3;
-currentDate: Date = new Date(); 
+currentDate: Date = new Date();
+
+// serverHost: string = 'http://localhost:3000';
+serverHost: string = 'https://ephesians-fitness-server.onrender.com';
+
 //#endregion.
 
 onEmailFocus() {
@@ -122,7 +126,7 @@ submitReview() {
     Email: this.reviewForm.get('email')?.value
   };
 
-  this.http.post('http://localhost:3000/add-review', newReview).subscribe({
+  this.http.post(`${this.serverHost}/add-review`, newReview).subscribe({
     next: () => {
       this.reviewForm.reset();
       this.popup.show('Review submitted successfully!');
@@ -146,7 +150,7 @@ sendReviewEmail(review: ReviewParameters) {
     cartid: "N/A" // You might need to pass a valid cart ID if applicable
   };
 
-  this.http.post('http://localhost:3000/send-review-email', emailData).subscribe({
+  this.http.post(`${this.serverHost}/send-review-email`, emailData).subscribe({
     next: () => {
       this.popup.show('Review email sent successfully!');
     },

@@ -30,6 +30,9 @@ export class WorkoutsComponent {
   };
 
   emailFocused = false;
+
+  // serverHost: string = 'http://localhost:3000';
+serverHost: string = 'https://ephesians-fitness-server.onrender.com';
   //#endregion.
 
   //#region "Programs."
@@ -191,7 +194,7 @@ export class WorkoutsComponent {
       const { name, email, goals } = this.formData;
       const requestData = { name, email, goals };
 
-      this.http.post<{ message: string }>('http://localhost:3000/request-workout', requestData)
+      this.http.post<{ message: string }>(`${this.serverHost}/request-workout`, requestData)
         .subscribe({
           next: (response) => {
             this.popup.show('Workout request sent successfully!');

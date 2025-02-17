@@ -17,6 +17,9 @@ export class RegisterComponent {
   submitted = false;
   message = '';
 
+  // serverHost: string = 'http://localhost:3000';
+serverHost: string = 'https://ephesians-fitness-server.onrender.com';
+
   constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {
     this.registerForm = this.fb.group({
       fullName: ['', Validators.required],
@@ -40,7 +43,7 @@ export class RegisterComponent {
     }
 
     // Send registration data to backend
-    this.http.post('http://localhost:3000/register', this.registerForm.value)
+    this.http.post(`${this.serverHost}/register`, this.registerForm.value)
       .subscribe({
         next: (response: any) => {
           this.message = response.message;
