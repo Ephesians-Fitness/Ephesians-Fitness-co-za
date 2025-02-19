@@ -27,6 +27,9 @@ export class UserOrdersComponent {
     itemsPerPage: number = 10;
     totalPages: number = 0;
   
+    // serverHost: string = 'http://localhost:3000';
+serverHost: string = 'https://ephesians-fitness-server.onrender.com';
+
     showPopup: boolean = false;
     @ViewChild(PopupMessageComponent) popup!: PopupMessageComponent;
     //#endregion.
@@ -101,7 +104,7 @@ export class UserOrdersComponent {
   
     //#region "Approve the Selected Order."
     approveOrder(cartId: string): void {
-      this.http.post('http://localhost:3000/approve-order', { cartId }).subscribe({
+      this.http.post(`${this.serverHost}/approve-order`, { cartId }).subscribe({
         next: (response: any) => {
           this.popup.show(response.message || 'Order approved successfully.');
           this.loadOrders(); 
@@ -124,7 +127,7 @@ export class UserOrdersComponent {
         email: order.ClientEmail,
       };
   
-      this.http.post<{ message: string }>('http://localhost:3000/send-shipment-email', emailData).subscribe({
+      this.http.post<{ message: string }>(`${this.serverHost}/send-shipment-email`, emailData).subscribe({
         next: (response) => {
           this.popup.show(`Shipment details sent successfully for Order ID: ${order.OrderID}`);
         },
@@ -137,7 +140,7 @@ export class UserOrdersComponent {
   
     //#region "Update status in DB."
     shipOrder(cartId: string): void {
-      this.http.post('http://localhost:3000/ship-order', { cartId }).subscribe({
+      this.http.post(`${this.serverHost}/ship-order`, { cartId }).subscribe({
         next: (response: any) => {
           this.popup.show(response.message || 'Order shipped successfully.');
           this.loadOrders(); 

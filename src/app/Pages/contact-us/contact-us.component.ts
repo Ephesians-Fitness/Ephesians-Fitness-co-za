@@ -19,6 +19,9 @@ emailFocused = false;
 displayHeaderFooter: boolean = true;
 allowedPreviousRoutes: string[] = ['/products', '/about', '/support', '/home'];
 
+// serverHost: string = 'http://localhost:3000';
+serverHost: string = 'https://ephesians-fitness-server.onrender.com';
+
 @ViewChild(PopupMessageComponent) popup!: PopupMessageComponent;
 //#endregion.
 
@@ -49,7 +52,7 @@ sendEmail(form: NgForm) {
     const formData = { name, email, phone, subject, message };
 
     this.http
-      .post<{ message: string }>('http://localhost:3000/send-email', formData)
+      .post<{ message: string }>(`${this.serverHost}/send-email`, formData)
       .subscribe({
         next: (response) => {
           this.popup.show('Contact Us request sent successfully!');

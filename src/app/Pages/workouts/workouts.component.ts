@@ -30,6 +30,9 @@ export class WorkoutsComponent {
   };
 
   emailFocused = false;
+
+  // serverHost: string = 'http://localhost:3000';
+serverHost: string = 'https://ephesians-fitness-server.onrender.com';
   //#endregion.
 
   //#region "Programs."
@@ -122,17 +125,17 @@ export class WorkoutsComponent {
 
   getWorkoutFileUrl(programId: number): string{
     switch(programId){
-      case 1: return 'assets/training/Full-Body-Strength.pdf';
-      case 2: return 'assets/training/PPL-Gym-Split.pdf';
-      case 3: return 'assets/training/Upper-Lower-Split.pdf';
-      case 4: return 'assets/training/Powerlifting.pdf';
-      case 5: return 'assets/training/Hypertrophy-Circuit.pdf';
-      case 6: return 'assets/training/Bodyweight-Strength.pdf';
-      case 7: return 'assets/training/Calisthenics.pdf';
-      case 8: return 'assets/training/Full-Body-Bodyweight.pdf';
-      case 9: return 'assets/training/HIIT-Sprint-Cardio.pdf';
-      case 10: return 'assets/training/Cardio-Endurance.pdf';
-      default: return 'assets/training/PPL-Gym-Split.pdf';
+      case 1: return '/training/Full-Body-Strength.pdf';
+      case 2: return '/training/PPL-Gym-Split.pdf';
+      case 3: return '/training/Upper-Lower-Split.pdf';
+      case 4: return '/training/Powerlifting.pdf';
+      case 5: return '/training/Hypertrophy-Circuit.pdf';
+      case 6: return '/training/Bodyweight-Strength.pdf';
+      case 7: return '/training/Calisthenics.pdf';
+      case 8: return '/training/Full-Body-Bodyweight.pdf';
+      case 9: return '/training/HIIT-Sprint-Cardio.pdf';
+      case 10: return '/training/Cardio-Endurance.pdf';
+      default: return '/training/PPL-Gym-Split.pdf';
     }
   }
 
@@ -191,7 +194,7 @@ export class WorkoutsComponent {
       const { name, email, goals } = this.formData;
       const requestData = { name, email, goals };
 
-      this.http.post<{ message: string }>('http://localhost:3000/request-workout', requestData)
+      this.http.post<{ message: string }>(`${this.serverHost}/request-workout`, requestData)
         .subscribe({
           next: (response) => {
             this.popup.show('Workout request sent successfully!');
